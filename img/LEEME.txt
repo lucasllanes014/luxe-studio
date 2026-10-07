@@ -1,0 +1,14 @@
+CARPETA img/ - LUXE Studio (DEMO)
+
+Aquí se guardan las fotos reales del cliente. Mientras no haya fotos propias, la página
+usa imágenes de demostración (Unsplash) que se cargan desde internet.
+
+Cómo reemplazar una foto:
+1) Copiá la foto a esta carpeta (ej.: corte-1.jpg). Recomendado: JPG, menos de 500 KB.
+2) Abrí script.js y escribí la ruta:
+   - Galería: en la lista GALLERY, campo src:  src: 'img/corte-1.jpg'
+   - Imagen principal: CONFIG.heroImage:  heroImage: 'img/portada.jpg'
+   - Imagen de "Nosotros": CONFIG.aboutImage:  aboutImage: 'img/local.jpg'
+
+Archivos de esta carpeta:
+- favicon.svg: ícono de la pestaña del navegador.

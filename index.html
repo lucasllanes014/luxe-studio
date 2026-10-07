@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LUXE Studio | Peluquería y barbería</title>
+  <meta name="description" content="LUXE Studio: cortes, barba, coloración y tratamientos capilares. Agendá tu turno online y confirmalo por WhatsApp. (Sitio de demostración)">
+  <meta name="theme-color" content="#151d2e">
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#servicios">Saltar al contenido</a>
+
+  <!-- NAVBAR FIJA -->
+  <header class="nav" id="nav">
+    <div class="wrap nav__in">
+      <a href="#inicio" class="logo" aria-label="LUXE Studio, ir al inicio">LUXE<span>Studio</span></a>
+      <nav id="menu" class="menu" aria-label="Principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#turnos">Turnos</a>
+        <a href="#galeria">Galería</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#ubicacion">Ubicación</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <div class="nav__actions">
+        <a class="btn btn--accent btn--sm nav__cta" href="#turnos">Agendar turno</a>
+        <button class="burger" id="burger" aria-label="Abrir menú" aria-controls="menu" aria-expanded="false"><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- INICIO -->
+    <section class="hero" id="inicio">
+      <!-- Imagen principal: cambiá CONFIG.heroImage en script.js por la foto real del cliente -->
+      <img class="hero__img" id="heroImg" src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=1800&q=70" alt="Barbero recortando el cabello de un cliente con navaja" width="1800" height="1200" fetchpriority="high" data-nofallback="1">
+      <div class="pole" aria-hidden="true"></div>
+      <div class="wrap hero__in">
+        <p class="hero__kicker">LUXE Studio</p>
+        <h1>Tu estilo,<br>nuestra pasión.</h1>
+        <p class="hero__sub">Cortes precisos, barba al detalle y color con asesoramiento. Elegí tu horario y confirmalo en un minuto por WhatsApp.</p>
+        <div class="hero__btns">
+          <a class="btn btn--accent" href="#turnos">Agendar turno</a>
+          <a class="btn btn--ghost" href="#servicios">Ver servicios</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICIOS (se generan desde script.js) -->
+    <section class="section" id="servicios">
+      <div class="wrap">
+        <div class="head">
+          <h2 class="title">Servicios</h2>
+          <p class="lead">Precios de ejemplo. Tocá “Reservar” y el servicio queda elegido en el formulario de turnos.</p>
+        </div>
+        <div class="grid" id="serviceGrid"></div>
+      </div>
+    </section>
+
+    <!-- SISTEMA DE TURNOS -->
+    <section class="section section--dark" id="turnos">
+      <div class="wrap book">
+        <div class="book__intro">
+          <h2 class="title">Agendá tu turno</h2>
+          <p>Elegí servicio, día y hora. Al terminar se abre WhatsApp con tu reserva escrita, solo tenés que enviarla.</p>
+          <ul class="book__notes">
+            <li>No necesitás crear una cuenta.</li>
+            <li>El turno se confirma por WhatsApp con el local.</li>
+            <li>Atendemos de lunes a sábado.</li>
+          </ul>
+        </div>
+
+        <form class="form" id="bookForm" novalidate>
+          <div class="field">
+            <label for="service">Servicio</label>
+            <select id="service" name="service" required aria-describedby="err-service"></select>
+            <p class="err" id="err-service" role="alert"></p>
+          </div>
+
+          <div class="row2">
+            <div class="field">
+              <label for="date">Fecha</label>
+              <input type="date" id="date" name="date" required aria-describedby="err-date">
+              <p class="err" id="err-date" role="alert"></p>
+            </div>
+            <div class="field">
+              <label for="time">Hora</label>
+              <select id="time" name="time" required aria-describedby="err-time"></select>
+              <p class="err" id="err-time" role="alert"></p>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="name">Tu nombre</label>
+            <input type="text" id="name" name="name" autocomplete="name" placeholder="Ej.: Lucas" required aria-describedby="err-name">
+            <p class="err" id="err-name" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label for="phone">Tu número de WhatsApp</label>
+            <input type="tel" id="phone" name="phone" inputmode="tel" autocomplete="tel" placeholder="Ej.: 0981 123 456" required aria-describedby="err-phone">
+            <p class="err" id="err-phone" role="alert"></p>
+          </div>
+
+          <!-- Se muestra el resumen y el botón de WhatsApp solo cuando todos los datos son válidos -->
+          <div class="confirm" id="confirmBox" hidden>
+            <p class="confirm__sum" id="summary"></p>
+            <a class="btn btn--wa btn--full" id="confirmBtn" href="#" target="_blank" rel="noopener noreferrer">Confirmar turno por WhatsApp</a>
+          </div>
+          <button type="submit" class="btn btn--accent btn--full" id="checkBtn">Revisar mi turno</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- GALERÍA (se genera desde script.js) -->
+    <section class="section" id="galeria">
+      <div class="wrap">
+        <div class="head">
+          <h2 class="title">Galería</h2>
+          <p class="lead">Imágenes de demostración. Se reemplazan por las fotos reales del local y de los trabajos.</p>
+        </div>
+        <div class="gallery" id="gallery"></div>
+      </div>
+    </section>
+
+    <!-- NOSOTROS -->
+    <section class="section section--bone" id="nosotros">
+      <div class="wrap about">
+        <figure class="about__fig">
+          <img id="aboutImg" src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1000&h=1250&q=70" alt="Interior de una peluquería con sillones y un gran espejo" width="1000" height="1250" loading="lazy">
+        </figure>
+        <div class="about__text">
+          <h2 class="title">Nosotros</h2>
+          <p class="about__lead">En LUXE Studio cuidamos cada detalle: del primer saludo al último retoque.</p>
+          <p>Somos un equipo de barberos y estilistas con años de experiencia. Escuchamos qué buscás, te aconsejamos según tu rostro y tu cabello, y trabajamos con productos profesionales para que el resultado dure.</p>
+          <ul class="about__list">
+            <li><strong>Atención personalizada</strong> Turnos con tiempo suficiente para cada cliente.</li>
+            <li><strong>Experiencia</strong> Técnicas clásicas y tendencias actuales.</li>
+            <li><strong>Ambiente cómodo</strong> Un lugar para relajarte mientras te atendemos.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- UBICACIÓN -->
+    <section class="section" id="ubicacion">
+      <div class="wrap find">
+        <div class="find__info">
+          <h2 class="title">Ubicación</h2>
+          <dl class="info">
+            <div><dt>Dirección</dt><dd id="addrText"></dd></div>
+            <div><dt>Horarios</dt><dd id="hoursText"></dd></div>
+          </dl>
+          <a class="btn btn--accent" id="routeBtn" href="#" target="_blank" rel="noopener noreferrer">Cómo llegar</a>
+        </div>
+        <!-- MAPA: se inserta desde script.js (CONFIG.mapsEmbed / CONFIG.mapsQuery) -->
+        <div class="map" id="mapBox"></div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="section section--dark" id="contacto">
+      <div class="wrap contact">
+        <div>
+          <h2 class="title">Contacto</h2>
+          <p class="contact__lead">¿Dudas sobre un servicio o querés un horario especial? Escribinos.</p>
+          <a class="btn btn--wa" id="contactWa" href="#">Contactar por WhatsApp</a>
+        </div>
+        <dl class="info info--light">
+          <div><dt>WhatsApp</dt><dd><a id="waText" href="#"></a></dd></div>
+          <div><dt>Instagram</dt><dd><a class="js-ig" href="#" target="_blank" rel="noopener noreferrer"></a></dd></div>
+          <div><dt>Dirección</dt><dd class="js-addr"></dd></div>
+          <div><dt>Horarios</dt><dd class="js-hours"></dd></div>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="pole pole--h" aria-hidden="true"></div>
+    <div class="wrap footer__in">
+      <a href="#inicio" class="logo" aria-label="LUXE Studio, volver arriba">LUXE<span>Studio</span></a>
+      <nav class="footer__links" aria-label="Redes y contacto">
+        <a class="js-ig" href="#" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a class="js-wa" href="#" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <a href="#ubicacion">Ubicación</a>
+      </nav>
+      <small>&copy; <span id="year">2026</span> LUXE Studio. Todos los derechos reservados.</small>
+      <small class="footer__demo">Sitio de demostración: nombre, datos y fotos son de ejemplo.</small>
+    </div>
+  </footer>
+
+  <!-- BARRA FIJA EN CELULAR: agendar y WhatsApp siempre a mano -->
+  <div class="dock" id="dock">
+    <a class="btn btn--accent" href="#turnos">Agendar turno</a>
+    <a class="btn btn--wa dock__wa js-wa" href="#" target="_blank" rel="noopener noreferrer" aria-label="Escribir por WhatsApp">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>
+      <span>WhatsApp</span>
+    </a>
+  </div>
+
+  <!-- VISOR DE GALERÍA -->
+  <dialog class="lightbox" id="lightbox" aria-label="Imagen ampliada">
+    <button type="button" class="lightbox__close" id="lbClose" aria-label="Cerrar imagen">&times;</button>
+    <img id="lbImg" src="" alt="">
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
